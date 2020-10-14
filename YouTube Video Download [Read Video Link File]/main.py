@@ -20,11 +20,14 @@ def High(video):
     Video_High_Quality.download(filepath=path)  # downloading start at resuming
     print("\nDownload Complete...\n")
 
+f = open("Link.txt", "r")
+l = f.read().split("\n")
+
 try:
-    f = open("Link.txt", "r")
-    for i in f.read().split("\n"):
+    for i in range(len(l)):
+        # print(l[i])
         import pafy
-        url = i
+        url = l[i]
         video = pafy.new(url)
         if option == 'l' or option == "L":
             Low(video)
